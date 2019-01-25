@@ -16,7 +16,7 @@ const toySchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:"supplierModel"
           },                   //供应商
-          img:String ,          //图片
+        img:String ,          //图片
 })
 
 mongoose.model("toyModel", toySchema, "toy");
