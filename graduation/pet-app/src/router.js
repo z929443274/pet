@@ -2,8 +2,11 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import Info from './views/Info.vue'
+import ElementUI from 'element-ui';
 
 Vue.use(Router)
+Vue.use(ElementUI)
 
 export default new Router({
   routes: [
@@ -23,7 +26,7 @@ export default new Router({
       component: Register
     },
     {
-      path: '/info',
+      path: '/Info',
       name: 'Info',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
