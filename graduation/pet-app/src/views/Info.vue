@@ -212,10 +212,7 @@ body > .el-container {
   padding: 18px 0;
 }
 
-.box-card {
-  /* width: 100%;
-  margin-top: 10px; */
-}
+
 .mor p {
   margin: 10px 0px;
   line-height: 20px;

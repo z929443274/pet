@@ -24,7 +24,7 @@ export function registerAsync({userName,password}) {
       body: JSON.stringify({userName,password}),  //请求体
   
     }
-return request('/users/register',addData);
+return request('/users/Register',addData);
 }
 
 export function isRepeatAsync({userName}) {

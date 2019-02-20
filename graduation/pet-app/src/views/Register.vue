@@ -119,7 +119,7 @@ export default {
     },
      submitForm(formName) {
         this.$refs[formName].validate((valid) => {
-          this.repeat()
+        //  this.repeat()
           if (valid) {
             console.log(valid)
              alert('注册成功!');

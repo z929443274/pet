@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
-import Info from './views/Info.vue';
+import Info from './views/Info.vue'
 import ElementUI from 'element-ui';
 import List from './components/petOwner/List.vue';
 import AddOwner from './components/petOwner/AddOwner.vue';
@@ -23,7 +23,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/register',
+      path: '/Register',
       name: 'Register',
       component: Register
     },
