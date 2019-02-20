@@ -115,8 +115,8 @@
         this.$router.history.push("./register");
       },
       info() {
-        console.log(this);
-        this.$router.history.push("./info");
+        console.log(this); 
+       this.$router.history.push("./info");
       }
     }
   };
