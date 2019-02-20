@@ -44,7 +44,27 @@ export default new Router({
           path:'AddOwner',
           name:'AddOwner',
           component: () => import(/* webpackChunkName: "about" */ './components/petOwner/AddOwner.vue'),
-        }
+        },
+        {
+          path: 'beautifyList',
+          name: 'beautifyList',
+          component: () => import('./components/beautify/beautifyList.vue')
+        },
+        {
+          path: 'addBeautify',
+          name: 'addBeautify',
+          component: () => import('./components/beautify/addBeautify.vue')
+        },
+        {
+          path: 'trusteeshipList',
+          name: 'trusteeshipList',
+          component: () => import('./components/trusteeship/trusteeshipList.vue')
+        },
+        {
+          path: 'addTrusteeship',
+          name: 'addTrusteeship',
+          component: () => import('./components/trusteeship/addTrusteeship.vue')
+        },
       ]
     }
   ]

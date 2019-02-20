@@ -80,6 +80,22 @@
               <el-menu-item index="7-1">用户列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+           <el-submenu index="8">
+            <template slot="title">
+              <i class="el-icon-service"></i>
+              <span slot="title">服务管理</span>
+            </template>
+            <el-menu-item-group>
+              <span slot="title">服务列表</span>
+              <el-menu-item index="8-1" @click="BeautifyList">美容列表</el-menu-item>
+              <el-menu-item index="8-2" @click="trusteeshipList">托管列表</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <span slot="title">新增服务</span>
+              <el-menu-item index="8-3" @click="addBeautify">新增美容</el-menu-item>
+              <el-menu-item index="8-4" @click="addTrusteeship">新增托管</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <el-main >
@@ -124,6 +140,19 @@ export default {
     },
     addOwner() {
       this.$router.history.push("/Info/AddOwner");
+    },
+    
+    BeautifyList() {
+      this.$router.history.push("/Info/BeautifyList");
+    },
+    addBeautify() {
+      this.$router.history.push("/Info/addBeautify");
+    },
+    addTrusteeship() {
+      this.$router.history.push("/Info/addTrusteeship");
+    },
+    trusteeshipList() {
+      this.$router.history.push("/Info/trusteeshipList");
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
