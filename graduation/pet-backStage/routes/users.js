@@ -28,15 +28,16 @@ router.post('/login',async function (req,res,next){
   //   }
   // }
   // res.send(result)
-  let { userName, password } = req.body; 
-	res.send(await login(userName, password));
+  let { userName, password, type} = req.body; 
+	res.send(await login(userName, password,type));
 })
 
 //注册
 router.post('/Register',async function (req,res,next){
-  let {userName,password} = req.body;
+  let {userName,password,type} = req.body;
   // console.log(userName,password)
   // await register(userName,password);
+  console.log(type)
   res.send(await Register(req.body))
 })
 

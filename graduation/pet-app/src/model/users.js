@@ -6,6 +6,7 @@ export default {
         password:'',
         isLogin:false,
         state:"open",
+        type:""
     },
     mutations:{
 
@@ -14,7 +15,8 @@ export default {
         loginAsync:async({commit,state},payload) => {
             return await loginAsync({
                 userName:payload.userName,
-                password:payload.password
+                password:payload.password,
+                type:payload.type
             })
            // commit("checkLogin",data)
         },
@@ -22,6 +24,7 @@ export default {
             const {data} = await registerAsync({
                 userName:payload.userName,
                 password:payload.password,
+                type:payload.type
             });
             console.log(state);
             

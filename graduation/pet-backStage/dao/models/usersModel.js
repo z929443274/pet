@@ -3,7 +3,8 @@ const  mongoose = require('mongoose');
 const usersSchema = new mongoose.Schema({
           userName:String,   //用户名
           password:String,   //密码
-          state:String,      //删除状态
+          state:String,   //账号类型
+          type:String,     //删除状态
           storefrontId:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"storefrontModel"
