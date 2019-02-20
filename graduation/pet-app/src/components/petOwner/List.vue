@@ -1,5 +1,5 @@
 l<template>
-        <el-card   class="box-card" style="min-height: 700px">
+        <el-card   class="box-card" style="min-height: 700px;width:100%;margin-top:10px;">
           <el-table :data="tableData" border style="width: 100%;">
             <el-table-column prop="name" label="姓名" width="300"></el-table-column>
             <el-table-column prop="nickName" label="昵称" width="300"></el-table-column>
@@ -148,8 +148,6 @@ export default {
 
 
 <style>
-.box-card{
-/* min-height: 700px; */
-}
+
 
 </style>
