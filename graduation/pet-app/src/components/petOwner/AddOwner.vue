@@ -1,5 +1,5 @@
 <template>
- <el-card style="height:650px" class="box-card">
+ <el-card style="height:650px;width: 100%;margin-top: 10px;" class="box-card">
             <el-form :model="form" ref="form" style="width:600px;margin:auto;padding-right:10%">
                 <p>新增宠主</p>
             <el-form-item label="宠主姓名：" :label-width="formLabelWidth" prop="name">
@@ -65,8 +65,8 @@ export default {
 }
 
 .box-card {
-  width: 100%;
-  margin-top: 10px;
+  /* width: 100%;
+  margin-top: 10px; */
 }
 .mor p {
   margin: 10px 0px;

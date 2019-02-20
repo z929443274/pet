@@ -112,8 +112,46 @@
         this.$router.history.push("./Register");
       },
       info() {
-        console.log(this); 
-       this.$router.history.push("./info");
+        // console.log(this);
+        this.$router.history.push("./Info");
+      },
+      handleClick(tab, event) {
+        console.log(tab, event);
+      },
+      login(){
+        let user = {};
+        user.userName = this.ruleForm2.userName;
+        user.password = this.ruleForm2.password;
+        this.loginAsync(user).then(({data}) => {
+          if(data.isLogin === true){
+            this.success();
+            this.getUser(user);
+          }else{
+            this.fail();
+          }
+        }) ;
+      },
+      getUser(user){
+          user = JSON.stringify(user)
+          sessionStorage.user = user
+          console.log(user)
+          this.$router.push({path:'./Info'});
+        },
+      success(){
+        this.user = {
+          userName : this.ruleForm2.userName,
+          password : this.ruleForm2.password,
+        };
+        this.$message({
+          message:"登录成功",
+          type:"success",
+        });
+      },
+      fail(){
+        this.$message({
+          message:"账号或密码错误，请重试",
+          type:"fail",
+        });
       }
     }
   };

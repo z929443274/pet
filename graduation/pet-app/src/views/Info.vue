@@ -213,8 +213,8 @@ body > .el-container {
 }
 
 .box-card {
-  width: 100%;
-  margin-top: 10px;
+  /* width: 100%;
+  margin-top: 10px; */
 }
 .mor p {
   margin: 10px 0px;
