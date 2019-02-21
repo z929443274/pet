@@ -1,19 +1,19 @@
 import request from '../utils/request';
 
-export function loginAsync({userName,password}) {
+export function loginAsync({userName,password,type}) {
     var addData = {
         method: "post",   //请求方法
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({userName,password}),  //请求体
+        body: JSON.stringify({userName,password,type}),  //请求体
     
       }
   return request('/users/login',addData);
 }
 
-export function registerAsync({userName,password}) {
+export function registerAsync({userName,password,type}) {
   // console.log(userName,password)
   var addData = {
       method: "post",   //请求方法
@@ -21,10 +21,10 @@ export function registerAsync({userName,password}) {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({userName,password}),  //请求体
+      body: JSON.stringify({userName,password,type}),  //请求体
   
     }
-return request('/users/Register',addData);
+return request('/users/register',addData);
 }
 
 export function isRepeatAsync({userName}) {

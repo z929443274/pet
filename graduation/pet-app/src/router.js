@@ -36,6 +36,36 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Info.vue'),
       children:[
         {
+          path: 'toy',
+          name: 'Toy',
+          component: () => import(/* webpackChunkName: "about" */ './components/toy/toy.vue')
+        },
+        {
+          path: 'addToy',
+          name: 'AddToy',
+          component: () => import(/* webpackChunkName: "about" */ './components/toy/addToy.vue')
+        },  
+        {
+          path: 'food',
+          name: 'Food',
+          component: () => import(/* webpackChunkName: "about" */ './components/food/food.vue')
+        },
+        {
+          path: 'addFood',
+          name: 'AddFood',
+          component: () => import(/* webpackChunkName: "about" */ './components/food/addFood.vue')
+        },
+        {
+          path: 'shower',
+          name: 'Shower',
+          component: () => import(/* webpackChunkName: "about" */ './components/shower/shower.vue')
+        },
+        {
+          path: 'addShower',
+          name: 'AddShower',
+          component: () => import(/* webpackChunkName: "about" */ './components/shower/addShower.vue')
+        },
+        {
           path:'List',
           name:'List',
           component: () => import(/* webpackChunkName: "about" */ './components/petOwner/List.vue'),
