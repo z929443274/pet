@@ -6,10 +6,11 @@ const {
 } = require ("../dao/usersDao")
 
 //登录
-module.exports.login = async function (userName,password){
+module.exports.login = async function (userName,password,type){
     let data = await login(
         userName,
-        password
+        password,
+        type
     );
     console.log(data)
     if (data.length > 0) {
@@ -20,9 +21,10 @@ module.exports.login = async function (userName,password){
 }
 
 //注册
-module.exports.Register = async function ({userName,password}){
+module.exports.Register = async function ({userName,password,type}){
     
-    let data= await Register({userName,password})
+    let data= await Register({userName,password,type})
+    console.log(data)
     return data;
 }
 

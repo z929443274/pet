@@ -8,37 +8,55 @@
       <div class="box-card" style="padding-top:40px;margin-top: 100px">
         <img src="../images/logo.png" alt>
       </div>
-      <el-tabs type="border-card" style="margin-top:50px;margin-left:150px;width:450px" class="box-card">
+      <el-tabs
+        type="border-card"
+        style="margin-top:50px;margin-right:100px;width:450px"
+        class="box-card"
+      >
         <el-tab-pane>
           <span slot="label">快速注册</span>
-            <div class="text item" style="">
-              <el-form
-                :model="ruleForm2"
-                status-icon
-                :rules="rules2"
-                ref="ruleForm2"
-                label-width="70px"
-                class="demo-ruleForm"
-              >
-                <el-form-item label="账号" prop="userName">
-                  <el-input v-model="ruleForm2.userName" placeholder="11位手机号"></el-input>
-                </el-form-item>
-                <el-form-item label="密码" prop="password">
-                  <el-input type="password" v-model="ruleForm2.password" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="确认密码" prop="checkPass">
-                  <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item style="margin-top:50px">
-                  <el-button type="primary" @click="submitForm('ruleForm2')" style="margin-right:30px">注册</el-button>
-                  <el-button @click="resetForm('ruleForm2')" style="margin-left:50px">重置</el-button>
-                </el-form-item>
-              </el-form>
-            </div>
+          <div class="text item" style>
+            <el-form
+              :model="ruleForm2"
+              status-icon
+              :rules="rules2"
+              ref="ruleForm2"
+              label-width="80px"
+              class="demo-ruleForm"
+            >
+              <el-form-item label="账号" prop="userName">
+                <el-input v-model="ruleForm2.userName" placeholder="11位手机号"></el-input>
+              </el-form-item>
+              <el-form-item label="密码" prop="password">
+                <el-input type="password" v-model="ruleForm2.password" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="确认密码" prop="checkPass">
+                <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="账号类型" prop="type">
+                <el-select placeholder="请选择账号类型" v-model="value" style="width: 340px;">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item style="margin-top:50px">
+                <el-button
+                  type="primary"
+                  @click="submitForm('ruleForm2')"
+                  style="margin-right:30px"
+                >注册</el-button>
+                <el-button @click="resetForm('ruleForm2')" style="margin-left:50px">重置</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
         </el-tab-pane>
         <el-tab-pane>
-          <span slot="label">扫码注册 </span>
-          <img src="../images/erweima.png" alt="">
+          <span slot="label">扫码注册</span>
+          <img src="../images/erweima.png" alt>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -48,24 +66,24 @@
 <script>
 // @ is an alias to /src
 import Login from "@/views/Login.vue";
-import {loginAsync, registerAsync, isRepeatAsync} from "../services/users"
-import {createNamespacedHelpers} from "vuex"
+import { loginAsync, registerAsync, isRepeatAsync } from "../services/users";
+import { createNamespacedHelpers } from "vuex";
 const { mapState, mapMutations, mapActions } = createNamespacedHelpers("Users");
 
 export default {
-  name:"reg",
+  name: "reg",
   data() {
     var userName = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("账号不能为空"));
       }
       setTimeout(() => {
-            if (value.length !== 11) {
-              callback(new Error("账号长度不一致"));
-            } else {
-              callback();
-            }
-        }, 1000);
+        if (value.length !== 11) {
+          callback(new Error("账号长度不一致"));
+        } else {
+          callback();
+        }
+      }, 1000);
     };
     var validatePass = (rule, value, callback) => {
       if (value === "") {
@@ -98,11 +116,22 @@ export default {
         password: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
         userName: [{ validator: userName, trigger: "blur" }]
-      }
+      },
+      options: [
+        {
+          value: "stage",
+          label: "平台用户"
+        },
+        {
+          value: "store",
+          label: "门店用户"
+        }
+      ],
+      value: ""
     };
   },
   computed: {
-    ...mapState(["userName", "password","state"])
+    ...mapState(["userName", "password", "state"])
   },
   methods: {
     ...mapActions(["loginAsync", "registerAsync", "isRepeatAsync"]),
@@ -111,43 +140,44 @@ export default {
       let userName = this.ruleForm2.userName;
       this.$router.history.push(`/`);
     },
-    repeat(){
-      let user = []
+    repeat() {
+      let user = [];
       user.userName = this.ruleForm2.userName;
-      this.isRepeatAsync(user)
-      console.log(user)
+      this.isRepeatAsync(user);
+      console.log(user);
     },
-     submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-        //  this.repeat()
-          if (valid) {
-            console.log(valid)
-             alert('注册成功!');
-           this.reg();
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        // this.repeat()
+        if (valid) {
+          console.log(valid);
+          alert("注册成功!");
+          this.reg();
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
     info() {
       this.$router.history.push("/Info");
     },
     handleClick(tab, event) {
       console.log(tab, event);
     },
-    register(){
+    register() {
       let user = {};
-      user.userName=this.ruleForm2.userName;
-      user.password=this.ruleForm2.password;
+      user.userName = this.ruleForm2.userName;
+      user.password = this.ruleForm2.password;
       user.state = open;
-      console.log(user)
-      this.registerAsync(user)
+      user.type = this.value;
+      console.log(user);
+      this.registerAsync(user);
     },
     resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
-  },
+      this.$refs[formName].resetFields();
+    }
+  }
 };
 </script>
 
