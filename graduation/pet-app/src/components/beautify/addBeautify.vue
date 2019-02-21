@@ -1,65 +1,68 @@
 <template>
-<el-card class="box-card">
-  <div slot="header" class="clearfix">
-    <span>新增美容</span>
-  </div>
-  <div v-for="o in 1" :key="o" class="text item">
-       <el-form ref="form" :model="form" label-width="100px">
-      <el-form-item label="服务规格">
-        <el-select v-model="form.kind" placeholder="请选择服务规格">
-          <el-option label="普修" value="kind"></el-option>
-          <el-option label="精修" value="kind"></el-option>
+    <el-form :model="beautify" ref="beautify" label-width="100px" class="demo-form" style="width:600px;margin:0 auto">
+      <h1>美容</h1>
+      <el-form-item label="服务规格" prop="kind">
+        <el-select v-model="beautify.kind" placeholder="请选择服务规格">
+          <el-option label="普修" value="普修"></el-option>
+          <el-option label="精修" value="精修"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="适用规格">
-        <el-select v-model="form.fit" placeholder="请选择适用规格">
-          <el-option label="小型" value="fit"></el-option>
-          <el-option label="中型" value="fit"></el-option>
-          <el-option label="大型" value="fit"></el-option>
+      <el-form-item label="适用规格" prop="fit">
+        <el-select v-model="beautify.fit" placeholder="请选择适用规格">
+          <el-option label="小型" value="小型"></el-option>
+          <el-option label="中型" value="中型"></el-option>
+          <el-option label="大型" value="大型"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="价格(元)">
-        <el-select v-model="form.price" placeholder="请选择价格">
-          <el-option label="100" value="price"></el-option>
-          <el-option label="120" value="price"></el-option>
-          <el-option label="180" value="price"></el-option>
-          <el-option label="200" value="price"></el-option>
+      <el-form-item label="价格(元)" prop="price">
+        <el-select v-model="beautify.price" placeholder="请选择价格(元)">
+          <el-option label="100" value="100"></el-option>
+          <el-option label="120" value="120"></el-option>
+          <el-option label="180" value="180"></el-option>
+          <el-option label="200" value="200"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="选择日期">
-        <el-date-picker v-model="form.schedule.date" type="date" placeholder="选择日期"></el-date-picker>
+        <el-col :span="11">
+          <el-form-item prop="schedule">
+            <el-date-picker
+              type="date"
+              placeholder="选择日期"
+              v-model="beautify.schedule[0].date"
+              style="width:100%;"
+            ></el-date-picker>
+          </el-form-item>
+        </el-col>
       </el-form-item>
       <el-form-item label="选择时间">
         <el-col :span="11">
-          <el-time-select
-            placeholder="开始"
-            v-model="form.schedule.time1"
-            style="width: 80%;"
-            :picker-options="{start: '08:30',step: '00:30',end: '17:30'}"
-          ></el-time-select>
+          <el-form-item prop="schedule.time1">
+            <el-time-select
+              placeholder="开始"
+              v-model="beautify.schedule[0].time1"
+              :picker-options="{start: '09:00',step: '00:30',end: '24:00'}"
+              style="width: 80%;"
+            ></el-time-select>
+          </el-form-item>
         </el-col>
         <el-col class="line" :span="2">-</el-col>
         <el-col :span="11">
-          <el-time-select
-            placeholder="结束"
-            v-model="form.schedule.time2"
-            style="width: 80%;"
-            :picker-options="{start: '09:00',step: '00:30',end: '18:00'}"
-          ></el-time-select>
+          <el-form-item prop="schedule.time2">
+            <el-time-select
+              placeholder="结束"
+              v-model="beautify.schedule[0].time2"
+              :picker-options="{start: '09:00',step: '00:30',end: '24:00'}"
+              style="width: 80%;"
+            ></el-time-select>
+          </el-form-item>
         </el-col>
       </el-form-item>
-
       <el-form-item>
-        <el-button>重置</el-button>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button type="primary" @click="resetForm('beautify')">重置</el-button>
+        <el-button type="primary" @click="submitForm">立即创建</el-button>
       </el-form-item>
     </el-form>
-  </div>
-    </el-card>
-  
 
- 
-  
 </template>
 <script>
 //命名空间
@@ -73,32 +76,27 @@ const {
 export default {
   name: "addBeautify",
   methods: {
-    // 取消新增
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then(_ => {
-          done();
-        })
-        .catch(_ => {});
+    ...mapActions(["addBeautyAsync"]),
+    submitForm() {
+      this.addBeautyAsync(this.beautify);
+      alert("添加成功");
     },
-    //创建新的美容
-    onSubmit() {
-      console.log("submit!");
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     }
   },
   data() {
     return {
-      form: {
+      beautify: {
         kind: "",
         fit: "",
         price: "",
-        schedule: [
-          {
+        state:"open",
+        schedule: [ {
             date: "",
-            timer1: "",
-            timer2: ""
-          }
-        ]
+            time1: "",
+            time2: ""
+          }]
       }
     };
   }
@@ -106,4 +104,7 @@ export default {
 </script>
 
 <style>
+.box-card {
+  width: 700px;
+}
 </style>

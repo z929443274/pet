@@ -1,38 +1,46 @@
+import {addTrusteeship,updateTrusteeship,removeTrusteeship,getTrusteeshipByPageAsync} from '../services/trusteeship'
 export default {
     namespaced: true,
     state: {
-      trusteeship: [
-        {
-          _id:'1', 
-          schedule:"2019-11-28",
-          timer:"13:00-13:25",
-           fit:'大',
-           price:"100",
-          },
-          {
-            _id:'13',
-            schedule:"2019-11-28",
-            timer:"14:00-14:40",
-            fit:'小',
-            price:"200",
-           },
-           {
-            _id:'14',
-            schedule:"2019-11-28",
-            timer:"14:00-14:40",
-            fit:'中',
-            price:"260",
-           },
-        
-    
-      ],
-
+      currentPage:1,  
+      eachPage:5,
+      totalPage:0,
+      count:0,
+      data:[],
     },
     mutations: {
-
+      getTrusteeshipByPage:(state,payload)=>{
+          console.log(payload);
+        Object.assign(state,payload)
     },
-    getters: {
-
+    setCurPage:(state,currentPage)=>{
+        state.currentPage = currentPage
     },
-    actions: {}
+    setEachPage:(state,eachPage)=>{
+        state.eachPage = eachPage
+    },
+    },
+ 
+    actions: {
+      getTrusteeshipByPageAsync:async ({commit,state})=>{
+        const {data} = await getTrusteeshipByPageAsync({
+            currentPage:state.currentPage,
+            eachPage:state.eachPage
+        });
+        commit('getTrusteeshipByPage',data)
+    },
+    addTrustAsync: async ({dispatch},payload)=>{
+        await addTrusteeship(payload);
+        dispatch('getTrusteeshipByPageAsync')
+    },
+    updateTrustAsync: async ({dispatch},{_id,kind,fit,price,schedule})=>{
+        await updateTrusteeship({_id,kind,fit,price,schedule});
+        dispatch('getTrusteeshipByPageAsync')
+    },
+    removeTrustAsync: async ({dispatch},_id)=>{
+        await removeTrusteeship(_id);
+        dispatch('getTrusteeshipByPageAsync')
+    }
+    }
   };
+  
