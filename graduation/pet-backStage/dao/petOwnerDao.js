@@ -5,14 +5,14 @@ module.exports.addOwner=async function (data) {
 }
 
 
-module.exports.getData = async function ({pageSize,eachPage}) {
-  pageSize = parseInt(pageSize);
+module.exports.getData = async function ({curPage,eachPage}) {
+  curPage = parseInt(curPage);
   eachPage = parseInt(eachPage);
  let count = await petOwnerModel.countDocuments()-0;
  let totalPage =Math.ceil(count / eachPage)-0;
   let data = await  petOwnerModel
                    .find()                
-                   .skip((pageSize-1)*eachPage)
+                   .skip((curPage-1)*eachPage)
                    .limit(eachPage)
-  return {pageSize,eachPage,totalPage,count,data}
+  return {curPage,eachPage,totalPage,count,data}
 }

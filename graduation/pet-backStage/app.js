@@ -6,14 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-<<<<<<< HEAD
 var petOwnerRouter =  require('./routes/petOwner');
-=======
 var toyRouter = require('./routes/toy');
 var foodRouter = require('./routes/food');
 var showerRouter = require('./routes/shower');
 // var commodityRouter = require('./routes/commodity');
->>>>>>> 1fab00bf5a62c0c220c0e18957e7143099248351
 
 var app = express();
 require('./dao/database');
@@ -29,14 +26,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-<<<<<<< HEAD
 app.use('/petOwner',petOwnerRouter);
-=======
 app.use('/toy', toyRouter);
 app.use('/food', foodRouter);
 app.use('/shower', showerRouter);
 // app.use('/commodity', commodityRouter);
->>>>>>> 1fab00bf5a62c0c220c0e18957e7143099248351
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
