@@ -69,7 +69,7 @@ l<template>
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapActions, mapState } = createNamespacedHelpers("PetOwner");
+const { mapActions, mapState,mapMutations } = createNamespacedHelpers("PetOwner");
 export default {
   name: "List",
   mounted() {
@@ -78,10 +78,11 @@ export default {
 
   },
   computed: {
-    ...mapState(["curPage", "eachPage", "maxPage", "count", "rows","data"])
+    ...mapState(["pageSize", "eachPage", "maxPage", "count", "rows","data"])
  
   },
   methods: {
+    ...mapMutations(["setSize","setEach"]),
     ...mapActions(["getOwnerByPageAsync"]),
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -114,13 +115,11 @@ export default {
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
-      this.eachPage=val;
-      this.getOwnerByPageAsync()
+    this.setSize(val);
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      console.log(this)
-      this.getOwnerByPageAsync()
+    this.setEach(val);
     }
   },
   data() {

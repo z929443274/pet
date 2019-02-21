@@ -1,6 +1,6 @@
 import request from '../utils/request';
 
-export function getOwnerByPageAsync({ pageSize = 1, eachPage = 5 } = {}) {
+export function getOwnerByPageAsync({ pageSize=1, eachPage=5 } = {}) {
   return request(`/petOwner/getData?pageSize=${pageSize}&eachPage=${eachPage}`);
 }
 

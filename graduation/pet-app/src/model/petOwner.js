@@ -3,13 +3,19 @@ export default {
     namespaced:true,
     state:{
         pageSize:1,
-        eachPage:5,
+        eachPage:3,
         maxPage:1,
         total:0,
         rows:[]
 
     },
     mutations:{
+        setSize:(state,payload)=>{
+            state.pageSize=payload
+        },
+        setEach:(state,payload)=>{
+            state.eachPage=payload
+        },
         getOwnerByPage:(state,payload)=>{
             console.log(state)
             Object.assign(state,payload)
