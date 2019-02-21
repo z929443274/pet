@@ -37,7 +37,6 @@ router.post('/Register',async function (req,res,next){
   let {userName,password,type} = req.body;
   // console.log(userName,password)
   // await register(userName,password);
-  console.log(type)
   res.send(await Register(req.body))
 })
 

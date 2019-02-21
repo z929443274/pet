@@ -37,7 +37,7 @@ export function isRepeatAsync({userName}) {
       body: JSON.stringify({userName}),  //请求体
   
     }
-return request('/users/isRepeat',addData);
+return request('/users/repeat',addData);
 }
 
 

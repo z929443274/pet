@@ -141,14 +141,14 @@ export default {
       this.$router.history.push(`/`);
     },
     repeat() {
-      let user = [];
+    let user = {};
       user.userName = this.ruleForm2.userName;
       this.isRepeatAsync(user);
       console.log(user);
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
-        // this.repeat()
+        this.repeat()
         if (valid) {
           console.log(valid);
           alert("注册成功!");
