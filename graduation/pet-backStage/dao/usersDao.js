@@ -13,4 +13,5 @@ module.exports.Register = async function ({userName,password,type}){
 
 module.exports.repeat = async function (userName) {
     return await usersModel.find(userName)
+    console.log(userName)
   }

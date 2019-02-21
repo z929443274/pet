@@ -26,7 +26,6 @@ export default {
                 password:payload.password,
                 type:payload.type
             });
-            console.log(state);
             
         },
         isRepeatAsync:async({commit,state},payload) => {
