@@ -2,21 +2,18 @@ const  mongoose = require('mongoose');
 
 const foodSchema = new mongoose.Schema({
          name:String ,     //名字
-         make:String,      //制作
+         shape:String,      //商品形状
          fit:String ,     //适用规格
-         exclusive:String ,     //专属规格
+         taste:String ,     //商品口味
          packing:String,        //包装规格
-         taste:String,        //口味
+         impact:String,        //商品功用
          place:String,        //产地
          date:String,         //出厂日期
          expirationDate:String,    //保质期
          price:String ,       //价格
+         state: String, //状态
          count:Number ,  //售出数量
-         serialNumber:Number,     //上架序号
-         supplierId:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"supplierModel"
-          },                   //供应商
+         supplier:String, //供应商
           img:String ,          //图片
 })
 

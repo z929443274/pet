@@ -41,18 +41,31 @@
               <el-menu-item index="3-2">新增宠物</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="4">
+
+
+
+         
+           <el-submenu index="4">
             <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span>商品管理</span>
+              <i class="el-icon-service"></i>
+              <span slot="title">商品管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="4-1">玩具列表</el-menu-item>
-              <el-menu-item index="4-2">食品列表</el-menu-item>
-              <el-menu-item index="4-3">洗浴品列表</el-menu-item>
-              <el-menu-item index="4-4">新增商品</el-menu-item>
+              <span slot="title">商品列表</span>
+              <el-menu-item index="4-1" @click="toy">宠物玩具列表</el-menu-item>
+              <el-menu-item index="4-2" @click="food">宠物食物列表</el-menu-item>
+              <el-menu-item index="4-3" @click="shower">洗浴用品列表</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <span slot="title">新增商品</span>
+              <el-menu-item index="4-4" @click="addToy">新增宠物玩具</el-menu-item>
+              <el-menu-item index="4-5" @click="addFood">新增宠物食物</el-menu-item>
+              <el-menu-item index="4-6" @click="addShower">新增洗浴用品</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+
+
+
           <el-submenu index="5">
             <template slot="title">
               <i class="el-icon-setting"></i>
@@ -135,6 +148,19 @@
 <script>
 export default {
   methods: {
+    toy() {
+      this.$router.history.push("/Info/toy");
+    },food() {
+      this.$router.history.push("/Info/food");
+    },shower() {
+      this.$router.history.push("/Info/shower");
+    },addToy() {
+      this.$router.history.push("/Info/addToy");
+    },addFood() {
+      this.$router.history.push("/Info/addFood");
+    },addShower() {
+      this.$router.history.push("/Info/addShower");
+    },
     list() {
       this.$router.history.push("/Info/List");
     },
