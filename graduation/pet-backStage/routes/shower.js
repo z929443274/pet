@@ -22,8 +22,6 @@ router.post("/addShower",async function(req, res, next){
     res.send(await addShower(req.body));
 });
 
-
-
 //确认修改
 router.post("/updateShower",async function(req, res, next){
     res.send(await updateShower(req.body));

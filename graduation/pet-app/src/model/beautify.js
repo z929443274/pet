@@ -2,11 +2,11 @@ import {addBeautify,removeBeautify,updateBeautify,getBeautifyByPageAsync} from '
 export default {
     namespaced: true,
     state: {
-      currentPage:1,  
-      eachPage:5,
-      totalPage:0,
-      count:0,
-      data:[],
+      currentPage:1,  //当前页
+      eachPage:3, //每页显示条数
+      totalPage:0, //总页数
+      count:0, //数量
+      data:[], //数据
 
     },
     mutations: {
