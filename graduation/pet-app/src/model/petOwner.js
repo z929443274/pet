@@ -22,10 +22,21 @@ export default {
         }
     },
     actions:{
-        getOwnerByPageAsync:async({commit})=>{
-            const{data}=await getOwnerByPageAsync();
+        getOwnerByPageAsync:async({commit,state})=>{
+            const{data}=await getOwnerByPageAsync({
+                pageSize:state.pageSize,
+                eachPage:state.eachPage
+            });
             console.log(data)
             commit("getOwnerByPage",data)
+        },
+        setSizeTrans:async({commit,dispatch},payload)=>{
+            commit("setSize",payload);
+            dispatch("getOwnerByPageAsync")
+        },
+        setEachTrans:async({commit,dispatch},payload)=>{
+            commit("setEach",payload);
+            dispatch("getOwnerByPageAsync")
         },
         addOwnerAsync:async({dispath},payload) => {
             await addOwnerAsync(payload);
