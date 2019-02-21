@@ -7,31 +7,31 @@
     :rules="rules"
     label-width="80px" 
     style="width: 500px;margin: 0 auto">
-      <el-form-item label="商品名称" prop="name">
+      <el-form-item label="商品名称" :label-width="formLabelWidth" prop="name">
         <el-input v-model="shower.name" placeholder="请输入商品名称"></el-input>
       </el-form-item>
-      <el-form-item label="适用犬种" prop="fit">
+      <el-form-item label="适用犬种" :label-width="formLabelWidth" prop="fit">
         <el-input v-model="shower.fit" placeholder="请输入商品适用犬种"></el-input>
       </el-form-item>
-      <el-form-item label="商品规格" prop="packing">
+      <el-form-item label="商品规格" :label-width="formLabelWidth" prop="packing">
         <el-input v-model="shower.packing" placeholder="请输入商品规格"></el-input>
       </el-form-item>
-      <el-form-item label="商品功用" prop="impact">
+      <el-form-item label="商品功用" :label-width="formLabelWidth" prop="impact">
         <el-input v-model="shower.impact" placeholder="请输入商品规格"></el-input>
       </el-form-item>
-      <el-form-item label="出厂日期" prop="date">
+      <el-form-item label="出厂日期" :label-width="formLabelWidth" prop="date">
         <el-input v-model="shower.date" placeholder="请输入商品出厂日期"></el-input>
       </el-form-item>
-      <el-form-item label="保质期" prop="expirationDate">
+      <el-form-item label="保质期" :label-width="formLabelWidth" prop="expirationDate">
         <el-input v-model="shower.expirationDate" placeholder="请输入商品保质期"></el-input>
       </el-form-item>
-      <el-form-item label="商品产地" prop="place">
+      <el-form-item label="商品产地" :label-width="formLabelWidth" prop="place">
         <el-input v-model="shower.place" placeholder="请输入商品产地"></el-input>
       </el-form-item>
-      <el-form-item label="商品价格" prop="price">
+      <el-form-item label="商品价格" :label-width="formLabelWidth" prop="price">
         <el-input v-model="shower.price" placeholder="请输入商品价格"></el-input>
       </el-form-item>
-      <el-form-item label="供应商" prop="supplier">
+      <el-form-item label="供应商" :label-width="formLabelWidth" prop="supplier">
         <el-input v-model="shower.supplier" placeholder="请输入商品供应商"></el-input>
       </el-form-item>
   <el-form-item>
@@ -75,7 +75,8 @@ export default {
         price: [{ required: true, message: "商品价格不能为空" }],
         place: [{ required: true, message: "商品产地不能为空" }],
     
-      }
+      },
+      formLabelWidth: '120px'
     };
   },
   methods: {

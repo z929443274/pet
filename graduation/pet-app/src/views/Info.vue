@@ -9,25 +9,33 @@
           @open="handleOpen"
           @close="handleClose"
         >
-          <el-submenu index="1">
+          <el-submenu index="7">
             <template slot="title">
               <i class="el-icon-setting"></i>
-              <span>供应商管理</span>
+              <span>用户管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">供应商列表</el-menu-item>
-              <el-menu-item index="1-2">新增供应商</el-menu-item>
+              <el-menu-item index="7-1">用户列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-setting"></i>
               <span>门店管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">门店列表</el-menu-item>
-              <el-menu-item index="2-2">新增门店</el-menu-item>
+              <el-menu-item index="2-1" @click="storefrontList">门店列表</el-menu-item>
+              <el-menu-item index="2-2" @click="addStorefront">新增门店</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="9">
+            <template slot="title">
+              <i class="el-icon-setting"></i>
+              <span>员工管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="9-1" @click="staffList">员工列表</el-menu-item>
+              <el-menu-item index="9-2" @click="addStaff">新增员工</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
@@ -42,10 +50,7 @@
             </el-menu-item-group>
           </el-submenu>
 
-
-
-         
-           <el-submenu index="4">
+          <el-submenu index="4">
             <template slot="title">
               <i class="el-icon-service"></i>
               <span slot="title">商品管理</span>
@@ -64,8 +69,6 @@
             </el-menu-item-group>
           </el-submenu>
 
-
-
           <el-submenu index="5">
             <template slot="title">
               <i class="el-icon-setting"></i>
@@ -75,25 +78,8 @@
               <el-menu-item index="5-1">订单列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="6">
-            <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span>门店申请管理</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="6-1">门店申请列表</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="7">
-            <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span>用户管理</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="7-1">用户列表</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-           <el-submenu index="8">
+
+          <el-submenu index="8">
             <template slot="title">
               <i class="el-icon-service"></i>
               <span slot="title">服务管理</span>
@@ -109,9 +95,28 @@
               <el-menu-item index="8-4" @click="addTrusteeship">新增托管</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-setting"></i>
+              <span>供应商管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="1-1">供应商列表</el-menu-item>
+              <el-menu-item index="1-2">新增供应商</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="6">
+            <template slot="title">
+              <i class="el-icon-setting"></i>
+              <span>门店申请管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="6-1">门店申请列表</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main >
+      <el-main>
         <!-- 宠主列表 -->
         <router-view></router-view>
 
@@ -138,7 +143,7 @@
              <el-button style="margin-right:10%" @click="resetForm()">重置</el-button>
               <el-button type="primary" @click="change()">确 定</el-button>
         </el-form>
-         </el-card> -->
+        </el-card>-->
       </el-main>
     </el-container>
     <el-footer>Footer</el-footer>
@@ -150,24 +155,42 @@ export default {
   methods: {
     toy() {
       this.$router.history.push("/Info/toy");
-    },food() {
+    },
+    food() {
       this.$router.history.push("/Info/food");
-    },shower() {
+    },
+    shower() {
       this.$router.history.push("/Info/shower");
-    },addToy() {
+    },
+    addToy() {
       this.$router.history.push("/Info/addToy");
-    },addFood() {
+    },
+    addFood() {
       this.$router.history.push("/Info/addFood");
-    },addShower() {
+    },
+    addShower() {
       this.$router.history.push("/Info/addShower");
     },
+    storefrontList() {
+      this.$router.history.push("/Info/storefrontList");
+    },
+    addStorefront() {
+      this.$router.history.push("/Info/addStorefront");
+    },
+      staffList() {
+      this.$router.history.push("/Info/staffList");
+    },
+    addStaff() {
+      this.$router.history.push("/Info/addStaff");
+    },
+
     list() {
       this.$router.history.push("/Info/List");
     },
     addOwner() {
       this.$router.history.push("/Info/AddOwner");
     },
-    
+
     BeautifyList() {
       this.$router.history.push("/Info/BeautifyList");
     },
@@ -266,7 +289,6 @@ body > .el-container {
 .item {
   padding: 18px 0;
 }
-
 
 .mor p {
   margin: 10px 0px;

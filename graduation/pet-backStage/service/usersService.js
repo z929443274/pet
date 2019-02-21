@@ -14,9 +14,9 @@ module.exports.login = async function (userName,password,type){
     );
     console.log(data)
     if (data.length > 0) {
-        return { isLogin: true };
+        return data;
     } else {
-        return { isLogin: false };
+        return "";
     }
 }
 

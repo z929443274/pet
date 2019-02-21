@@ -149,9 +149,9 @@ export default {
       user.type = this.value
       this.loginAsync(user).then(({ data }) => {
         console.log(data)
-        if (data.isLogin === true) {
+        if (data.length>0) {
           this.success();
-          this.getUser(user);
+          this.getUser(data);
         } else {
           this.fail();
         }
@@ -164,11 +164,6 @@ export default {
       this.$router.push({ path: "./Info" });
     },
     success() {
-      this.user = {
-        userName: this.ruleForm2.userName,
-        password: this.ruleForm2.password,
-        type:this.value
-      };
       this.$message({
         message: "登录成功",
         type: "success"

@@ -7,37 +7,37 @@
     :rules="rules"
     label-width="80px" 
     style="width: 500px;margin: 0 auto">
-      <el-form-item label="商品名称" prop="name">
+      <el-form-item label="商品名称" :label-width="formLabelWidth" prop="name">
         <el-input v-model="food.name" placeholder="请输入商品名称"></el-input>
       </el-form-item>
-      <el-form-item label="商品形状" prop="shape">
+      <el-form-item label="商品形状" :label-width="formLabelWidth" prop="shape">
         <el-input v-model="food.shape" placeholder="请输入商品形状"></el-input>
       </el-form-item>
-      <el-form-item label="适用犬种" prop="fit">
+      <el-form-item label="适用犬种" :label-width="formLabelWidth" prop="fit">
         <el-input v-model="food.fit" placeholder="请输入商品适用犬种"></el-input>
       </el-form-item>
-      <el-form-item label="商品口味" prop="taste">
+      <el-form-item label="商品口味" :label-width="formLabelWidth" prop="taste">
         <el-input v-model="food.taste" placeholder="请输入商品口味"></el-input>
       </el-form-item>
-      <el-form-item label="包装规格" prop="packing">
+      <el-form-item label="包装规格" :label-width="formLabelWidth" prop="packing">
         <el-input v-model="food.packing" placeholder="请输入包装规格"></el-input>
       </el-form-item>
-      <el-form-item label="商品功用" prop="impact">
+      <el-form-item label="商品功用" :label-width="formLabelWidth" prop="impact">
         <el-input v-model="food.impact" placeholder="请输入商品功用"></el-input>
       </el-form-item>
-      <el-form-item label="出厂日期" prop="date">
+      <el-form-item label="出厂日期" :label-width="formLabelWidth" prop="date">
         <el-input v-model="food.date" placeholder="请输入商品出厂日期"></el-input>
       </el-form-item>
-      <el-form-item label="保质期" prop="expirationDate">
+      <el-form-item label="保质期" :label-width="formLabelWidth" prop="expirationDate">
         <el-input v-model="food.expirationDate" placeholder="请输入商品保质期"></el-input>
       </el-form-item>
-      <el-form-item label="商品产地" prop="place">
+      <el-form-item label="商品产地" :label-width="formLabelWidth" prop="place">
         <el-input v-model="food.place" placeholder="请输入商品产地"></el-input>
       </el-form-item>
-      <el-form-item label="商品价格" prop="price">
+      <el-form-item label="商品价格" :label-width="formLabelWidth" prop="price">
         <el-input v-model="food.price" placeholder="请输入商品价格"></el-input>
       </el-form-item>
-      <el-form-item label="供应商" prop="supplier">
+      <el-form-item label="供应商" :label-width="formLabelWidth" prop="supplier">
         <el-input v-model="food.supplier" placeholder="请输入商品供应商"></el-input>
       </el-form-item>
   <el-form-item>
@@ -84,7 +84,8 @@ export default {
         expirationDate: [{ required: true, message: "保质期不能为空" }],
         place: [{ required: true, message: "商品产地不能为空" }],
         price: [{ required: true, message: "商品价格不能为空" }],
-      }
+      },
+       formLabelWidth: '120px'
     };
   },
   methods: {

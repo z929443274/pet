@@ -169,7 +169,7 @@ export default {
       let user = {};
       user.userName = this.ruleForm2.userName;
       user.password = this.ruleForm2.password;
-      user.state = open;
+      user.state = "open";
       user.type = this.value;
       console.log(user);
       this.registerAsync(user);

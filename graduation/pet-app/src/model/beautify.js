@@ -3,7 +3,7 @@ export default {
     namespaced: true,
     state: {
       currentPage:1,  
-      eachPage:5,
+      eachPage:3,
       totalPage:0,
       count:0,
       data:[],
