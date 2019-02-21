@@ -2,7 +2,7 @@ import {getOwnerByPageAsync,addOwnerAsync} from '../services/petOwner'
 export default {
     namespaced:true,
     state:{
-        pageSize:1,
+        curPage:1,
         eachPage:3,
         maxPage:1,
         total:0,
@@ -11,7 +11,7 @@ export default {
     },
     mutations:{
         setSize:(state,payload)=>{
-            state.pageSize=payload
+            state.curPage=payload
         },
         setEach:(state,payload)=>{
             state.eachPage=payload
@@ -24,7 +24,7 @@ export default {
     actions:{
         getOwnerByPageAsync:async({commit,state})=>{
             const{data}=await getOwnerByPageAsync({
-                pageSize:state.pageSize,
+                curPage:state.curPage,
                 eachPage:state.eachPage
             });
             console.log(data)

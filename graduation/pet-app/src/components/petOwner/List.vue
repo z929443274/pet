@@ -23,7 +23,7 @@ l<template>
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="pageSize"
+        :current-page="curPage"
         :page-sizes="[3, 5, 8, 10]"
         :page-size="eachPage"
         layout="total, sizes, prev, pager, next, jumper"
@@ -74,11 +74,17 @@ export default {
   name: "List",
   mounted() {
     this.getOwnerByPageAsync()
- 
-
+  },
+  watch:{
+    eachPage(){
+      this.getOwnerByPageAsync()
+    },
+    curPage(){
+      this.getOwnerByPageAsync()
+    }
   },
   computed: {
-    ...mapState(["pageSize", "eachPage", "maxPage", "count", "rows","data"])
+    ...mapState(["curPage", "eachPage", "maxPage", "count", "rows","data"])
  
   },
   methods: {
@@ -115,11 +121,11 @@ export default {
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
-    this.setSize(val);
+    this.setEach(val);
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-    this.setEach(val);
+    this.setSize(val);
     }
   },
   data() {

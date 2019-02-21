@@ -14,6 +14,8 @@
     "morgan": "~1.9.0"
   },
   "devDependencies": {
+    "busboy": "^0.3.0",
+    "express-session": "^1.15.6",
     "mongoose": "^5.4.6"
   }
 }

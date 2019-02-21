@@ -3,56 +3,141 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session=require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+<<<<<<< HEAD
 
-var petServiceRouter = require('./routes/petService');
-var beautifyRouter = require('./routes/beautify');
+=======
+<<<<<<< HEAD
+var toyRouter = require('./routes/toy');
 var trusteeshipRouter = require('./routes/trusteeship');
+var supplierRouter = require('./routes/supplier');
+var storefrontRouter = require('./routes/storefront');
+var showerRouter = require('./routes/shower');
+var sellPetRouter = require('./routes/sellPet');
+var petsRouter = require('./routes/pets');
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b9fa8c261274f2319fe5739328997d8f2ef3b75e
+>>>>>>> c0c34c0717e79e105eb92fbf19fdf9d8b6c944a3
+var petServiceRouter = require('./routes/petService');
+var petOwnerRouter = require('./routes/petOwner');
+var orderRouter = require('./routes/order');
+var foodRouter = require('./routes/food');
+var commodityRouter = require('./routes/commodity');
+var beautifyRouter = require('./routes/beautify');
+var filesRouter = require('./routes/files');
+var staffRouter = require('./routes/staff');
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> c6508406ea9e619fb2c48efb20c95b25d7ef33eb
+>>>>>>> c0c34c0717e79e105eb92fbf19fdf9d8b6c944a3
 var petOwnerRouter =  require('./routes/petOwner');
 var toyRouter = require('./routes/toy');
 var foodRouter = require('./routes/food');
 var showerRouter = require('./routes/shower');
 // var commodityRouter = require('./routes/commodity');
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 1fab00bf5a62c0c220c0e18957e7143099248351
+>>>>>>> 52cedddcdec46ddbd86bae30c6c35b279fb12482
+>>>>>>> c6508406ea9e619fb2c48efb20c95b25d7ef33eb
+>>>>>>> b9fa8c261274f2319fe5739328997d8f2ef3b75e
+>>>>>>> c0c34c0717e79e105eb92fbf19fdf9d8b6c944a3
 
 var app = express();
-require('./dao/database.js');
+require('./dao/database');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(express.urlencoded({
+  extended: false
+}));
+app.use(cookieParser()); 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret:'123',
+  resave:true,
+  saveUninitialized:true
+}))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c0c34c0717e79e105eb92fbf19fdf9d8b6c944a3
 app.use('/petService', petServiceRouter);
 app.use('/beautify', beautifyRouter);
 app.use('/trusteeship', trusteeshipRouter);
 
+<<<<<<< HEAD
 
 app.use('/petOwner',petOwnerRouter);
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> c6508406ea9e619fb2c48efb20c95b25d7ef33eb
+app.use('/petOwner',petOwnerRouter);
+>>>>>>> b9fa8c261274f2319fe5739328997d8f2ef3b75e
+>>>>>>> c0c34c0717e79e105eb92fbf19fdf9d8b6c944a3
 app.use('/toy', toyRouter);
-app.use('/food', foodRouter);
+app.use('/trusteeship', trusteeshipRouter);
+app.use('/supplier', supplierRouter);
+app.use('/storefront', storefrontRouter);
 app.use('/shower', showerRouter);
+<<<<<<< HEAD
+app.use('/order', orderRouter);
+app.use('/sellPet', sellPetRouter);
+app.use('/pets', petsRouter);
+app.use('/petService', petServiceRouter);
+app.use('/petOwner', petOwnerRouter);
+app.use('/food', foodRouter);
+app.use('/commodity', commodityRouter);
+app.use('/beautify', beautifyRouter);
+app.use('/files', filesRouter);
+app.use('/staff', staffRouter);
+=======
 // app.use('/commodity', commodityRouter);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 1fab00bf5a62c0c220c0e18957e7143099248351
+>>>>>>> 52cedddcdec46ddbd86bae30c6c35b279fb12482
+>>>>>>> c6508406ea9e619fb2c48efb20c95b25d7ef33eb
+>>>>>>> c0c34c0717e79e105eb92fbf19fdf9d8b6c944a3
 
+>>>>>>> b9fa8c261274f2319fe5739328997d8f2ef3b75e
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

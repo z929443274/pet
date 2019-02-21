@@ -7,6 +7,8 @@ import trusteeship from './model/trusteeship'
 import toy from "./model/toy";
 import food from './model/food';
 import shower from './model/shower';
+import Storefront from './model/storefront';
+import Staff from './model/staff';
 
 
 Vue.use(Vuex)
@@ -19,7 +21,9 @@ export default new Vuex.Store({
     trusteeship,
     toy,
     food,
-    shower
+    shower,
+    Storefront,
+    Staff
   },
   state: {
 

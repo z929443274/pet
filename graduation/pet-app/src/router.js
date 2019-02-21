@@ -95,6 +95,25 @@ export default new Router({
           name: 'addTrusteeship',
           component: () => import('./components/trusteeship/addTrusteeship.vue')
         },
+        {
+          path: "storeFrontList",
+          name: "StoreFrontList",
+          component: () => import("./components/storefront/storeFrontList.vue")
+        },
+        {
+          path: "addStoreFront",
+          name: "AddStoreFront",
+          component: () => import("./components/storefront/addStoreFront.vue")
+        },{
+          path: "staffList",
+          name: "StaffList",
+          component: () => import("./components/staff/staffList.vue")
+        },
+        {
+          path: "addStaff",
+          name: "AddStaff",
+          component: () => import("./components/staff/addStaff.vue")
+        },
       ]
     }
   ]
